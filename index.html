@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.J Bridal Tailor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #ff69b4;
+        }
+        
+        .hero {
+            background-image: url('images/bridal-hero.jpg');
+            /* Make sure this image is in your 'images' folder */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+        
+        .hero-content {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            border-radius: 10px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #ff69b4;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #ff1493;
+        }
+        
+        .services {
+            padding: 100px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .services h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-item {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-item img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+        
+        .service-item h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .gallery {
+            padding: 100px 0;
+        }
+        
+        .gallery h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-overlay p {
+            color: #fff;
+            font-size: 18px;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        footer p {
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            color: #fff;
+            font-size: 24px;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #ff69b4;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 36px;
+            }
+            .hero p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">S.J Bridal Tailor</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Exquisite Bridal Tailoring</h1>
+                <p>Crafting your dream wedding dress with precision and passion</p>
+                <a href="#contact" class="btn">Book a Consultation</a>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="container">
+                <h2>Our Services</h2>
+                <div class="service-grid">
+                    <div class="service-item">
+                        <img src="images/custom-bridal-gowns.jpg" alt="Custom Bridal Gowns">
+                        <!-- Ensure this image exists in your 'images' folder -->
+                        <h3>Custom Bridal Gowns</h3>
+                        <p>Design and create your perfect wedding dress from scratch.</p>
+                    </div>
+                    <div class="service-item">
+                        <img src="images/alterations.jpg" alt="Alterations">
+                        <!-- Ensure this image exists in your 'images' folder -->
+                        <h3>Alterations</h3>
+                        <p>Expert alterations to ensure your dress fits like a glove.</p>
+                    </div>
+                    <div class="service-item">
+                        <img src="images/bridesmaid-dresses.jpg" alt="Bridesmaid Dresses">
+                        <!-- Ensure this image exists in your 'images' folder -->
+                        <h3>Bridesmaid Dresses</h3>
+                        <p>Coordinate your bridal party with custom-made dresses.</p>
+                    </div>
+                    <div class="service-item">
+                        <img src="images/accessories.jpg" alt="Accessories">
+                        <!-- Ensure this image exists in your 'images' folder -->
+                        <h3>Accessories</h3>
+                        <p>Complete your look with custom veils, sashes, and more.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery">
+            <div class="container">
+                <h2>Our Gallery</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="images/bridal-gown-1.jpg" alt="Bridal Gown 1">
+                        <!-- Ensure this image exists in your 'images' folder -->
+                        <div class="gallery-overlay">
+                            <p>Elegant lace mermaid gown</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/bridal-gown-2.jpg" alt="Bridal Gown 2">
+                        <!-- Ensure this image exists in your 'images' folder -->
+                        <div class="gallery-overlay">
+                            <p>Classic A-line silhouette</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/bridal-gown-3.jpg" alt="Bridal Gown 3">
+                        <!-- Ensure this image exists in your 'images' folder -->
+                        <div class="gallery-overlay">
+                            <p>Romantic ball gown with floral appliques</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/bridal-gown-4.jpg" alt="Bridal Gown 4">
+                        <!-- Ensure this image exists in your 'images' folder -->
+                        <div class="gallery-overlay">
+                            <p>Modern minimalist sheath dress</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <p>Contact us to schedule your consultation</p>
+            <p>Email: junaidulhaquesheikh204@gmail.com</p>
+            <p>Phone: +923359033554 / +923343046525 / +923022193845</p>
+            <p>Phone: Master Jamshaid / Proprietor: Muhammad Hamza / Junaid Ul Haque Sheikh / Abdul Haque Sheikh</p>
+
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animate service items on scroll
+        const serviceItems = document.querySelectorAll('.service-item');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+
+        serviceItems.forEach(item => {
+            item.style.opacity = 0;
+            item.style.transform = 'translateY(50px)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(item);
+        });
+    </script>
+</body>
+
+</html>
